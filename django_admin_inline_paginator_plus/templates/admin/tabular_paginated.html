@@ -1,0 +1,13 @@
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.0/dist/htmx.min.js" integrity="sha256-D8V7oOZVUE0oK7bsHD2JJAzenyzhw5PVs4qVxbxtqHU=" crossorigin="anonymous"></script>
+
+
+<div
+  id="{{ inline_admin_formset.formset.prefix }}-group-wrapper-js"
+
+>
+  {% include 'admin/edit_inline/tabular.html' %}
+
+  <div class="admin-tabular-inline-pagination">
+    {% include 'admin/tabular_paginator.html' %}
+  </div>
+</div>

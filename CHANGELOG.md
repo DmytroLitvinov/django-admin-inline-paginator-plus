@@ -2,14 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 
-## [0.3.0] - 2021-12-26
-Support for type hint and compatibility with django 4.0
- 
+## [0.0.1] - 10-07-2024
+
+New forked version `django-admin-inline-paginator-plus` 🎉
+
    * ### Added
-      - [ISSUE-14](https://github.com/shinneider/django-admin-inline-paginator/issues/14) Add python type hint.
-      - [ISSUE-18](https://github.com/shinneider/django-admin-inline-paginator/issues/18) Remove deprecated ugettext for support for django 4.
- 
+     - Add StackedInlinePaginated
+     - Add `htmx` for AJAX-paginated support
    * ### Changed
    * ### Fixed
-   * ### Credits (Contributors)
-      - [@aitorres](https://github.com/aitorres)
+   * ### Credits
+     - Thanks to @jazzband for the original `django-admin-inline-paginator` project

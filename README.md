@@ -1,14 +1,31 @@
-Django Admin Inline Paginator
-=============================
+Django Admin Inline Paginator Plus ⏩
+=====================================
 
-The "Django Admin Inline Paginator" is simple way to paginate your inline in django admin
+**🍴 This is a forked and updated version based on original library [django-admin-inline-paginator](https://github.com/shinneider/django-admin-inline-paginator).**
 
-If you use or like the project, click `Star` and `Watch` to generate metrics and i evaluate project continuity.
+> *As for 10.07.2024 nobody took responsibility, so I decided to take it since we need additional functionlity like AJAX for pagination.*
+
+The **"Django Admin Inline Paginator Plus"** is simple way to paginate your inline in django admin
+
+To keep Django ecosystem fresh and updated, please share your love and support, click `Star` 🫶
+
+## Features
+- **Easy Inline Pagination:** Quickly paginate inlines in the Django admin.
+- **AJAX Support:** Smooth and dynamic pagination without page reloads with `htmx`.
+- **Multiple Inline Pagination:** Manage multiple paginated inlines seamlessly.
+
+
+Here's a screenshot of the paginated inlines in action:
+
+![Django Admin Inline Paginator Plus screenshot](https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/tree/master/example/django-admin-inline-paginator-plus.png "Title")
+
 
 # Install:
 
-```
-pip install django-admin-inline-paginator
+Install the package via pip:
+
+```bash
+pip install django-admin-inline-paginator-plus
 ```
 
 # Usage:
@@ -18,63 +35,59 @@ pip install django-admin-inline-paginator
    ```
    INSTALLED_APPS = [
        ...
-       'django_admin_inline_paginator',
+       'django_admin_inline_paginator_plus',
        ...
    ]
    ```
 2. Create your model inline:
 
+    You can use `TabularInlinePaginated` ot `StackedInlinePaginated`. In our example we use `TabularInlinePaginated`.
+
    ```
-   from django_admin_inline_paginator.admin import TabularInlinePaginated
+   from django_admin_inline_paginator_plus.admin import TabularInlinePaginated
 
    class ModelWithFKAdminInline(TabularInlinePaginated):
-       fields = (...)
-       per_page = 1
        model = ModelWithFK
+       fields = (...)
+       per_page = 5
    ```
+
 3. Create main model admin and use inline:
 
     ```
     @register(YourModel)
     class YourModelAdmin(ModelAdmin):
+        model = YourModel
         fields = (...)
         inlines = (ModelWithFKAdminInline, )
-        model = YourModel
     ```
 
 # Advanced Usage:
 
 1. Paginate multiples inlines:
-    
+
     ```
+    from django_admin_inline_paginator_plus.admin import TabularInlinePaginated, StackedInlinePaginated
+
     class ModelWithFKInline(TabularInlinePaginated):
-    fields = ('name', 'active')
-    per_page = 2
-    model = ModelWithFK
-    pagination_key = 'page-model'  # make sure it's unique for page inline
+       model = ModelWithFK
+       fields = ('name', 'active')
+       per_page = 2
+       pagination_key = 'page-model'  # make sure it's unique for page inline
 
-    class AnotherModelWithFKInline(TabularInlinePaginated):
-    fields = ('name', 'active')
-    per_page = 2
-    model = AnotherModelWithFK
-    pagination_key = 'page-another-model'  # make sure it's unique for page inline
+    class AnotherModelWithFKInline(StackedInlinePaginated):
+       model = AnotherModelWithFK
+       fields = ('name', 'active')
+       per_page = 2
+       pagination_key = 'page-another-model'  # make sure it's unique for page inline
     ```
 
-2. Use previous inlines
-    
+2. Use inlines from step 1. and add to your main model admin:
+
     ```
     @register(YourModel)
     class YourModelAdmin(ModelAdmin):
+        model = YourModel
         fields = (...)
         inlines = (ModelWithFKAdminInline, AnotherModelWithFKInline)
-        model = YourModel
     ```
-
-# Images:
-
-![image](https://user-images.githubusercontent.com/30196992/98023167-706ca880-1dfe-11eb-89fe-c056741f0d5b.png)
-
-# Need a Maintainer
- In the last months i don't have much time, health problemas, change of country and others problems.  
- i have some surgeries for first part of 2022, and all of my current project don't use django-admin.  
- for these reasons, i need a help for a project continuation!!

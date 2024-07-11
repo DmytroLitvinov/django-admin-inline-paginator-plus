@@ -5,17 +5,23 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Country',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=100)),
                 ('active', models.BooleanField(default=True)),
             ],
@@ -27,10 +33,24 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='State',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=100)),
                 ('active', models.BooleanField(default=True)),
-                ('country', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='example.Country')),
+                (
+                    'country',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='example.Country',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'State',
@@ -40,10 +60,24 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Region',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=100)),
                 ('active', models.BooleanField(default=True)),
-                ('country', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='example.Country')),
+                (
+                    'country',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='example.Country',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'Region',

@@ -13,10 +13,9 @@ settings.INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
-
     # Third part apps
-    'django_admin_inline_paginator',
-    'tests'
+    'django_admin_inline_paginator_plus',
+    'tests',
 ]
 
 settings.TEMPLATES = [

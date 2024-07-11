@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.db.models import (CASCADE, BooleanField, CharField, ForeignKey,
-                              Model)
+from django.db.models import CASCADE, BooleanField, CharField, ForeignKey, Model
 
 
 class Country(Model):

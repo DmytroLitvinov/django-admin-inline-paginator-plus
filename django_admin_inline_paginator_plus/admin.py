@@ -1,6 +1,6 @@
 from typing import Optional
 
-from django.contrib.admin import TabularInline
+from django.contrib.admin import StackedInline, TabularInline
 from django.contrib.admin.views.main import ChangeList
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.core.paginator import Paginator
@@ -10,8 +10,9 @@ from django.http import HttpRequest
 
 class InlineChangeList:
     """
-        Used by template to construct the paginator
+    Used by template to construct the paginator
     """
+
     can_show_all = True
     multi_page = True
     get_query_string = ChangeList.__dict__['get_query_string']
@@ -30,6 +31,11 @@ class PaginationFormSetBase:
     per_page = 20
     pagination_key = 'page'
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.mount_paginator()
+        self.mount_queryset()
+
     def get_page_num(self) -> int:
         assert self.request is not None
         page = self.request.GET.get(self.pagination_key, '1')
@@ -46,6 +52,7 @@ class PaginationFormSetBase:
 
     def mount_paginator(self, page_num: int = None):
         assert self.queryset is not None and self.request is not None
+
         page_num = self.get_page_num() if not page_num else page_num
         self.paginator = Paginator(self.queryset, self.per_page)
         self.page = self.get_page(self.paginator, page_num)
@@ -57,10 +64,6 @@ class PaginationFormSetBase:
 
         self._queryset = self.page.object_list
 
-    def __init__(self, *args, **kwargs):
-        super(PaginationFormSetBase, self).__init__(*args, **kwargs)
-        self.mount_paginator()
-        self.mount_queryset()
 
 class InlinePaginated:
     pagination_key = 'page'
@@ -78,8 +81,14 @@ class InlinePaginated:
         PaginationFormSet.per_page = self.per_page
         return PaginationFormSet
 
+
+class StackedInlinePaginated(InlinePaginated, StackedInline):
+    template = 'admin/stacked_paginated.html'
+
+
 class TabularInlinePaginated(InlinePaginated, TabularInline):
     pass
+
 
 class GenericTabularInlinePaginated(InlinePaginated, GenericTabularInline):
     pass

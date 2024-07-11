@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-admin-inline-paginator-plus"
+version = "0.1.0"
+requires-python = ">=3.8"
+description = "The 'Django Admin Inline Paginator Plus' is simple way to paginate your inlines in Django admin"
+readme = "README.md"
+keywords = ["django", "admin", "paginator", "inlines", "pagination"]
+authors = [
+    {name = "Shinneider Libanio da Silva", email = "shinneider-libanio@hotmail.com"},
+    {name = "Dmytro Litvinov", email = "me@dmytrolitvinov.com"}
+]
+maintainers = [
+    {name = "Dmytro Litvinov", email = "me@dmytrolitvinov.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+license = {text = "MIT license"}
+dependencies = [
+    "django"
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+Homepage = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus"
+Issues = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/issues"
+Changelog = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["django_admin_inline_paginator_plus*"]
+
+# Ruff
+# ----
+[tool.ruff]
+src = ["django_admin_inline_paginator_plus"]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"

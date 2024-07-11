@@ -1,8 +1,9 @@
 include LICENSE
 include README.md
 
-recursive-include django_admin_inline_paginator/templates *
-recursive-include django_admin_inline_paginator/static *
-recursive-include django_admin_inline_paginator/locale *
-global-exclude __pycache__
-global-exclude *.py[co]
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-include django_admin_inline_paginator_plus/templates *
+recursive-include django_admin_inline_paginator_plus/static *
+recursive-include django_admin_inline_paginator_plus/locale *

@@ -1,24 +1,35 @@
 from django.contrib.admin import ModelAdmin, register
-from django_admin_inline_paginator.admin import TabularInlinePaginated
+from django_admin_inline_paginator_plus.admin import (
+    StackedInlinePaginated,
+    TabularInlinePaginated,
+)
 
 from .models import Country, Region, State
 
 
 class StateAdminInline(TabularInlinePaginated):
+    model = State
     fields = ('name', 'active')
     per_page = 5
-    model = State
+    pagination_key = 'state_page'
 
 
-class RegionAdminInline(TabularInlinePaginated):
+class CollapsedStateAdminInline(StateAdminInline):
+    verbose_name = 'State Collapsed'
+    verbose_name_plural = 'States Collapsed'
+    pagination_key = 'state_collapsed_page'
+    classes = ['collapse']
+
+
+class RegionAdminInline(StackedInlinePaginated):
+    model = Region
     fields = ('name', 'active')
     per_page = 2
-    model = Region
-    pagination_key = 'rpage'
+    pagination_key = 'region_page'
 
 
 @register(Country)
 class CountryAdmin(ModelAdmin):
-    fields = ('name', 'active')
-    inlines = (StateAdminInline, RegionAdminInline)
     model = Country
+    fields = ('name', 'active')
+    inlines = (StateAdminInline, CollapsedStateAdminInline, RegionAdminInline)
