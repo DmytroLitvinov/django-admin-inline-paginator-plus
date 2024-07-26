@@ -17,7 +17,7 @@ To keep Django ecosystem fresh and updated, please share your love and support, 
 
 Here's a screenshot of the paginated inlines in action:
 
-![Django Admin Inline Paginator Plus screenshot](https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/tree/master/example/django-admin-inline-paginator-plus.png "Title")
+![Django Admin Inline Paginator Plus screenshot](https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/blob/bd4d0eb435ae86b37473044a6d192405c3f0c86f/example/django-admin-inline-paginator-plus.png "Screenshot of Django Admin Inline Paginator Plus")
 
 
 # Install:
