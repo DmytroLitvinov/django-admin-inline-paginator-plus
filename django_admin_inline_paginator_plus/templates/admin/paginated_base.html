@@ -1,0 +1,18 @@
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.0/dist/htmx.min.js" integrity="sha256-D8V7oOZVUE0oK7bsHD2JJAzenyzhw5PVs4qVxbxtqHU=" crossorigin="anonymous"></script>
+
+<script>
+  document.body.addEventListener('htmx:configRequest', function(evt) {
+    if (!evt.target.classList.contains("pagination-plus-{{ inline_admin_formset.formset.prefix }}")) return
+    let url = new URL(window.location.href)
+    url.searchParams.forEach((value, key, parent) => {
+      if (!evt.detail.parameters.has(key)) {
+        evt.detail.parameters[key] = value
+      }
+    })
+    url.search = ""
+    evt.detail.path = url.href
+  });
+</script>
+
+{% block content %}
+{% endblock content %}

@@ -1,6 +1,7 @@
 import urllib.parse
 
 from django import template
+from django.utils.safestring import SafeString
 
 register = template.Library()
 
@@ -16,3 +17,8 @@ def modify_pagination_path(full_path: str, key: str, value: str) -> str:
     params = urllib.parse.parse_qs(get_params)
     params[key] = [str(value)]
     return urllib.parse.urlencode(params, doseq=True)
+
+
+@register.simple_tag
+def hx_vals(key: str, value):
+    return SafeString(f'hx-vals=\'{{"{key}": {value}}}\'')

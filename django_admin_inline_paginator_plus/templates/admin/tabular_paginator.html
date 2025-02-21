@@ -15,17 +15,22 @@
     <p class="paginator">
       {% if page_obj.has_previous %}
         <a
-          href="javascript:void(0)"
-          hx-get="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}"
+          class="pagination-plus-{{ inline_admin_formset.formset.prefix }}"
+          href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}"
+          hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+          hx-get=""
+          {% hx_vals inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}
         >
           {% translate 'previous' %}
         </a>
       {% endif %}
 
       {% if page_obj.number|add:"-5" > 0 %}
-        <a class="btn-page page-available"
-           href="javascript:void(0)"
-           hx-get="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key 0 %}"
+        <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-available"
+           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key 0 %}"
+           hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+           hx-get=""
+          {% hx_vals inline_admin_formset.formset.pagination_key 0 %}
         >
           1
         </a>
@@ -40,9 +45,11 @@
           <span class="btn-page page-selected">{{ page_num }}</span>
         {% else %}
           {% if page_num > page_obj.number|add:"-5" and page_num < page_obj.number|add:"5" %}
-            <a class="btn-page page-available"
-               href="javascript:void(0)"
-               hx-get="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_num %}"
+            <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-available"
+               href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_num %}"
+               hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+               hx-get=""
+              {% hx_vals inline_admin_formset.formset.pagination_key page_num %}
             >
               {{ page_num }}
             </a>
@@ -55,17 +62,24 @@
       {% endif %}
 
       {% if page_obj.number|add:"4" < page_obj.paginator.num_pages %}
-        <a class="btn-page page-available"
-           href="javascript:void(0)"
-           hx-get="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.paginator.num_pages %}">
+        <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-available"
+           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}"
+           hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+           hx-get=""
+          {% hx_vals inline_admin_formset.formset.pagination_key page_obj.paginator.num_pages %}
+        >
           {{ page_obj.paginator.num_pages }}
         </a>
       {% endif %}
 
       {% if page_obj.has_next %}
         <a
-          href="javascript:void(0)"
-          hx-get="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}">
+          class="pagination-plus-{{ inline_admin_formset.formset.prefix }} pagination-plus-{{ inline_admin_formset.formset.prefix }}"
+          href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}"
+          hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+          hx-get=""
+          {% hx_vals inline_admin_formset.formset.pagination_key page_obj.next_page_number %}
+        >
           {% translate 'next' %}
         </a>
       {% endif %}
