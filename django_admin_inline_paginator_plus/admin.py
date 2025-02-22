@@ -38,8 +38,11 @@ class PaginationFormSetBase:
 
     def get_page_num(self) -> int:
         assert self.request is not None
-        page = self.request.GET.get(self.pagination_key, '1')
-        if page.isnumeric() and page > '0':
+        page = self.request.GET.get(self.pagination_key)
+        if page and page.isnumeric() and page > '0':
+            return int(page)
+        page = self.request.POST.get(f"_paginator-plus-{self.prefix}")
+        if page and page.isnumeric() and page > '0':
             return int(page)
 
         return 1
