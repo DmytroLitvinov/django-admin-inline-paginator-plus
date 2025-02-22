@@ -31,5 +31,12 @@ class RegionAdminInline(StackedInlinePaginated):
 @register(Country)
 class CountryAdmin(ModelAdmin):
     model = Country
+    list_display = ('name', 'active')
     fields = ('name', 'active')
     inlines = (StateAdminInline, CollapsedStateAdminInline, RegionAdminInline)
+    list_filter = ('active',)
+
+
+@register(State)
+class StateAdmin(ModelAdmin):
+    pass

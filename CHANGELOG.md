@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 
+## [0.1.2] - 22-02-2025
+
+   * ### Fixed
+     - Fix deleting an item from a subsequent page of TabularInlinePaginated when GET params are presented. More details in [issue #3](https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/issues/3)
+
 ## [0.1.1] - 26-07-2024
 
    * ### Added

@@ -11,6 +11,7 @@
   hx-push-url="true"
 >
   {% with inline_admin_formset.formset.page as page_obj %}
+    <input type="hidden" name="_paginator-plus-{{ inline_admin_formset.formset.prefix }}" value="{{ page_obj.number }}" />
     <p class="paginator">
       {% if page_obj.has_previous %}
         <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }}"
