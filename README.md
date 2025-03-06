@@ -32,7 +32,7 @@ pip install django-admin-inline-paginator-plus
 
 1. Add to your INSTALLED_APPS, in settings.py:
 
-   ```
+   ```python
    INSTALLED_APPS = [
        ...
        'django_admin_inline_paginator_plus',
@@ -41,9 +41,9 @@ pip install django-admin-inline-paginator-plus
    ```
 2. Create your model inline:
 
-    You can use `TabularInlinePaginated` ot `StackedInlinePaginated`. In our example we use `TabularInlinePaginated`.
+   You can use `TabularInlinePaginated` ot `StackedInlinePaginated`. In our example we use `TabularInlinePaginated`.
 
-   ```
+   ```python
    from django_admin_inline_paginator_plus.admin import TabularInlinePaginated
 
    class ModelWithFKAdminInline(TabularInlinePaginated):
@@ -54,40 +54,40 @@ pip install django-admin-inline-paginator-plus
 
 3. Create main model admin and use inline:
 
-    ```
-    @register(YourModel)
-    class YourModelAdmin(ModelAdmin):
-        model = YourModel
-        fields = (...)
-        inlines = (ModelWithFKAdminInline, )
-    ```
+   ```python
+   @register(YourModel)
+   class YourModelAdmin(ModelAdmin):
+       model = YourModel
+       fields = (...)
+       inlines = (ModelWithFKAdminInline, )
+   ```
 
 # Advanced Usage:
 
 1. Paginate multiples inlines:
 
-    ```
-    from django_admin_inline_paginator_plus.admin import TabularInlinePaginated, StackedInlinePaginated
+   ```python
+   from django_admin_inline_paginator_plus.admin import TabularInlinePaginated, StackedInlinePaginated
 
-    class ModelWithFKInline(TabularInlinePaginated):
-       model = ModelWithFK
-       fields = ('name', 'active')
-       per_page = 2
-       pagination_key = 'page-model'  # make sure it's unique for page inline
+   class ModelWithFKInline(TabularInlinePaginated):
+      model = ModelWithFK
+      fields = ('name', 'active')
+      per_page = 2
+      pagination_key = 'page-model'  # make sure it's unique for page inline
 
-    class AnotherModelWithFKInline(StackedInlinePaginated):
-       model = AnotherModelWithFK
-       fields = ('name', 'active')
-       per_page = 2
-       pagination_key = 'page-another-model'  # make sure it's unique for page inline
-    ```
+   class AnotherModelWithFKInline(StackedInlinePaginated):
+      model = AnotherModelWithFK
+      fields = ('name', 'active')
+      per_page = 2
+      pagination_key = 'page-another-model'  # make sure it's unique for page inline
+   ```
 
 2. Use inlines from step 1. and add to your main model admin:
 
-    ```
-    @register(YourModel)
-    class YourModelAdmin(ModelAdmin):
-        model = YourModel
-        fields = (...)
-        inlines = (ModelWithFKAdminInline, AnotherModelWithFKInline)
-    ```
+   ```python
+   @register(YourModel)
+   class YourModelAdmin(ModelAdmin):
+       model = YourModel
+       fields = (...)
+       inlines = (ModelWithFKAdminInline, AnotherModelWithFKInline)
+   ```
