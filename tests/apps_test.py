@@ -17,4 +17,4 @@ class TestDjangoAppConfig(unittest.TestCase):
 
     def test_valid_verbose_name(self):
         verbose_name = DjangoAdminInlinePaginatorPlusConfig.verbose_name
-        self.assertEqual(verbose_name, _('Django Admin Inline Paginator'))
+        self.assertEqual(verbose_name, _('Django Admin Inline Paginator Plus'))
