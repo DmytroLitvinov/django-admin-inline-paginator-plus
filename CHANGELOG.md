@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 
+## [0.1.4] - 27-03-2025
+
+    * ### Changed
+     - Noting new - just improve README and CHANGELOG's link and tested versions for PyPI package
+
 ## [0.1.3] - 22-02-2025
 
    * ### Fixed
