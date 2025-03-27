@@ -54,7 +54,7 @@ dev = [
 [project.urls]
 Homepage = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus"
 Issues = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/issues"
-Changelog = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/CHANGELOG.md"
+Changelog = "https://github.com/DmytroLitvinov/django-admin-inline-paginator-plus/blob/master/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 include = ["django_admin_inline_paginator_plus*"]
