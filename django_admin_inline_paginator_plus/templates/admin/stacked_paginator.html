@@ -19,7 +19,7 @@
            hx-params="{{ inline_admin_formset.formset.pagination_key }}"
            hx-get=""
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}
-        >{% translate 'previous' %}</a>
+        >{% trans 'previous' %}</a>
       {% endif %}
 
       {% if page_obj.number|add:"-5" > 0 %}
@@ -69,9 +69,9 @@
            hx-params="{{ inline_admin_formset.formset.pagination_key }}"
            hx-get=""
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.next_page_number %}
-        >{% translate 'next' %}</a>
+        >{% trans 'next' %}</a>
       {% endif %}
-      <span class='btn-page results'>{{ page_obj.paginator.count }} {% translate 'Results' %}</span>
+      <span class='btn-page results'>{{ page_obj.paginator.count }} {% trans 'Results' %}</span>
     </p>
   {% endwith %}
 </div>
