@@ -22,7 +22,7 @@
           hx-get=""
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}
         >
-          {% translate 'previous' %}
+          {% trans 'previous' %}
         </a>
       {% endif %}
 
@@ -81,10 +81,10 @@
           hx-get=""
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.next_page_number %}
         >
-          {% translate 'next' %}
+          {% trans 'next' %}
         </a>
       {% endif %}
-      <span class='btn-page results'>{{ page_obj.paginator.count }} {% translate 'Results' %}</span>
+      <span class='btn-page results'>{{ page_obj.paginator.count }} {% trans 'Results' %}</span>
     </p>
   {% endwith %}
 </div>
