@@ -1,4 +1,6 @@
+{% if inline_admin_formset.formset.htmx_enabled %}
 <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.4/dist/htmx.min.js" integrity="sha256-4gndpcgjVHnzFm3vx3UOHbzVpcGAi3eS/C5nM3aPtEc=" crossorigin="anonymous"></script>
+{% endif %}
 
 <script>
   document.body.addEventListener('htmx:configRequest', function(evt) {
