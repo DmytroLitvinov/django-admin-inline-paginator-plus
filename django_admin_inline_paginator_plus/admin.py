@@ -30,6 +30,7 @@ class PaginationFormSetBase:
     request: Optional[HttpRequest] = None
     per_page = 20
     pagination_key = 'page'
+    htmx_enabled = True
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -73,6 +74,7 @@ class InlinePaginated:
     template = 'admin/tabular_paginated.html'
     per_page = 20
     extra = 0
+    htmx_enabled = True
 
     def get_formset(self, request, obj=None, **kwargs):
         formset_class = super().get_formset(request, obj, **kwargs)
@@ -82,6 +84,7 @@ class InlinePaginated:
 
         PaginationFormSet.request = request
         PaginationFormSet.per_page = self.per_page
+        PaginationFormSet.htmx_enabled = self.htmx_enabled
         return PaginationFormSet
 
 
