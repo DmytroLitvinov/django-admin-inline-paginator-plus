@@ -1,25 +1,28 @@
 .btn-page {
+    display: inline-block;
+    margin: 4px 2px;
+    padding: 2px 6px !important;
     border: none;
-    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--button-fg);
+    font-size: 12px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
     cursor: pointer;
 }
 
+.btn-page:hover {
+    background-color: var(--button-hover-bg) !important;
+}
+
 .page-selected {
-    background-color: #ffffff;
-    color: #666;
+    background-color: var(--primary);
 }
 
 .page-available {
     background-color: #008cba;
-    color: white !important;
 }
 
 .results {
-    background-color: #ffffff;
-    color: #666;
+    color: var(--body-fg);
 }

@@ -4,7 +4,6 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'django_admin_inline_paginator_plus/paginator.css' %}">
 
-
 <div
   hx-select="#{{ inline_admin_formset.formset.prefix }}-group-wrapper-js"
   hx-target="#{{ inline_admin_formset.formset.prefix }}-group-wrapper-js"
@@ -15,14 +14,14 @@
     <input type="hidden" name="_paginator-plus-{{ inline_admin_formset.formset.prefix }}" value="{{ page_obj.number }}" />
     <p class="paginator">
       {% if page_obj.has_previous %}
-        <a
-          class="pagination-plus-{{ inline_admin_formset.formset.prefix }}"
-          href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}"
-          hx-params="{{ inline_admin_formset.formset.pagination_key }}"
-          hx-get=""
+        <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-navigation"
+           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}"
+           hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+           hx-get=""
+           disabled="{{ page_obj.has_previous }}"
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}
         >
-          {% translate 'previous' %}
+          &#x23F4;
         </a>
       {% endif %}
 
@@ -74,17 +73,16 @@
       {% endif %}
 
       {% if page_obj.has_next %}
-        <a
-          class="pagination-plus-{{ inline_admin_formset.formset.prefix }} pagination-plus-{{ inline_admin_formset.formset.prefix }}"
-          href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}"
-          hx-params="{{ inline_admin_formset.formset.pagination_key }}"
-          hx-get=""
+        <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-navigation"
+           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}"
+           hx-params="{{ inline_admin_formset.formset.pagination_key }}"
+           hx-get=""
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.next_page_number %}
         >
-          {% translate 'next' %}
+          &#x23F5;
         </a>
       {% endif %}
-      <span class='btn-page results'>{{ page_obj.paginator.count }} {% translate 'Results' %}</span>
+      <span class='results'>{{ page_obj.paginator.count }} {% translate 'Results' %}</span>
     </p>
   {% endwith %}
 </div>
