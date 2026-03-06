@@ -74,7 +74,7 @@
 
       {% if page_obj.has_next %}
         <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-navigation"
-           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.paginator.num_pages %}"
+           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}"
            hx-params="{{ inline_admin_formset.formset.pagination_key }}"
            hx-get=""
            aria-label="{% translate 'next' %}"
