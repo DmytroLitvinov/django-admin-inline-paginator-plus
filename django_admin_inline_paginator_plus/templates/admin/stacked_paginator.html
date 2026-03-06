@@ -18,6 +18,7 @@
            href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}"
            hx-params="{{ inline_admin_formset.formset.pagination_key }}"
            hx-get=""
+           aria-label="{% translate 'previous' %}"
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.previous_page_number %}
         >
           &#x23F4;
@@ -76,6 +77,7 @@
            href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.paginator.num_pages %}"
            hx-params="{{ inline_admin_formset.formset.pagination_key }}"
            hx-get=""
+           aria-label="{% translate 'next' %}"
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.next_page_number %}
         >
           &#x23F5;
