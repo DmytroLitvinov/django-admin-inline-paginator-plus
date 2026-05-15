@@ -63,7 +63,7 @@
 
       {% if page_obj.number|add:"4" < page_obj.paginator.num_pages %}
         <a class="pagination-plus-{{ inline_admin_formset.formset.prefix }} btn-page page-available"
-           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.next_page_number %}"
+           href="?{% modify_pagination_path request.get_full_path inline_admin_formset.formset.pagination_key page_obj.paginator.num_pages %}"
            hx-params="{{ inline_admin_formset.formset.pagination_key }}"
            hx-get=""
           {% hx_vals inline_admin_formset.formset.pagination_key page_obj.paginator.num_pages %}
